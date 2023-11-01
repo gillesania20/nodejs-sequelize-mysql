@@ -1,11 +1,11 @@
 import 'dotenv/config';
 import express from 'express';
-// import handlebars from 'express-handlebars';
 import sequelize from './config/database.js';
 import gigsRouter from './routes/gigs.js';
 const PORT = process.env.PORT || 3500;
 const app = express();
-
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
 app.get('/', async (req, res) => {
     try{
         await sequelize.authenticate();
